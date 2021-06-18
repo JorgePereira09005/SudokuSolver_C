@@ -6,29 +6,28 @@ int SIZE_COLUMNS = 9;
 
 int main()
 {
-	int** puzzle;
+    int** puzzle;
+    int progress;
+    Sudoku* sudoku;
 
-	//array of an array of pointers
-	Sudoku* sudoku;
+    puzzle = createPuzzle();
 
-	puzzle = createPuzzle();
-	
-	sudoku = setUpPuzzle(puzzle);
+    sudoku = setUpPuzzle(puzzle);
 
-	printPuzzle(sudoku->squares);
+    printPuzzle(sudoku->squares);
 
-	printf("\nbefore checkPuzzle()");
+    while (UNSOLVED > 0)
+    {
+        progress = checkPuzzle(sudoku->squares, sudoku->boxes);
 
-	checkPuzzle(sudoku->squares, sudoku->boxes);
-	checkPuzzle(sudoku->squares, sudoku->boxes);
-	checkPuzzle(sudoku->squares, sudoku->boxes);
-	checkPuzzle(sudoku->squares, sudoku->boxes);
+        if (progress == 0)
+        {
+            printf("\nFailed to solve the puzzle!\n\n");
+            break;
+        }
+    }
 
-	printf("\nafter checkPuzzle()");
+    printPuzzle(sudoku->squares);
 
-	printf("\n\n");
-
-	printPuzzle(sudoku->squares);
-
-	return 0;
+    return 0;
 }

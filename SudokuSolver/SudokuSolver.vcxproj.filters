@@ -27,6 +27,9 @@
     <ClCompile Include="box.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="row.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sudoku.h">
